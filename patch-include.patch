@@ -1,0 +1,14 @@
+137a138,140
+> #if defined(__LP64__)
+> #undef BN_LLONG
+> #else
+138a142
+> #endif
+142a147,151
+> #if defined(__LP64__)
+> #define SIXTY_FOUR_BIT_LONG
+> #undef SIXTY_FOUR_BIT
+> #undef THIRTY_TWO_BIT
+> #else
+146a156
+> #endif
