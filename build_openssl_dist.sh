@@ -37,7 +37,8 @@ function pack_for ()
 	-output ${TMP_DIR}/lib${LIBNAME}.a -create
 }
 
-patch Configure < https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-conf.patch
+curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-conf.patch
+patch Configure < patch-conf.patch
 
 build_for iphoneos-cross-sim32 i386 SIM
 build_for iphoneos-cross-sim64 x86_64 SIM
@@ -50,7 +51,8 @@ pack_for crypto
 
 cp -r ${TMP_DIR}/armv7s/include ${TMP_DIR}/
 sed -i -e "90,96d" ${TMP_DIR}/include/openssl/opensslconf.h 
-patch ${TMP_DIR}/include/openssl/opensslconf.h < https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-include.patch
+curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-include.patch
+patch ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
 
 DIST_DIR=${HOME}/Desktop/openssl-ios-dist/
 mkdir ${DIST_DIR}
