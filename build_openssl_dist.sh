@@ -56,6 +56,7 @@ curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patc
 patch ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
 
 DIST_DIR=${HOME}/Desktop/openssl-ios-dist/
+rm -rf ${DIST_DIR}
 mkdir ${DIST_DIR}
 cp -r ${TMP_DIR}/include ${TMP_DIR}/libssl.a ${TMP_DIR}/libcrypto.a ${DIST_DIR}
 
