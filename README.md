@@ -16,7 +16,4 @@ cd openssl-1.0.1f
 curl https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/build_openssl_dist.sh |bash
 ......
 ```
-
-Result
-=================
 Find the result openssl-ios-dist on your desktop.
