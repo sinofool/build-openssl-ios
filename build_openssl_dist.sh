@@ -50,7 +50,8 @@ pack_for ssl
 pack_for crypto
 
 cp -r ${TMP_DIR}/armv7s/include ${TMP_DIR}/
-sed -i -e "90,96d" ${TMP_DIR}/include/openssl/opensslconf.h 
+sed -i.old -e "90,96d" ${TMP_DIR}/include/openssl/opensslconf.h
+rm -f ${TMP_DIR}/include/openssl/opensslconf.h.old
 curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-include.patch
 patch ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
 
