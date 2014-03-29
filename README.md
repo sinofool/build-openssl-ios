@@ -9,11 +9,13 @@ Tested openssl 1.0.1f
 
 Usage
 =================
+```
 curl -O http://www.openssl.org/source/openssl-1.0.1f.tar.gz
 tar xf openssl-1.0.1f.tar.gz
 cd openssl-1.0.1f
 curl https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/build_openssl_dist.sh |bash
 ......
+```
 
 Result
 =================
