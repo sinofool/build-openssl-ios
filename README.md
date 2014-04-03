@@ -2,6 +2,7 @@ build-openssl-ios
 =================
 
 Build openssl for iOS development
+Includes armv7 armv7s arm64 i386 and x86_64 support.
 
 Script only, please download openssl from here: http://www.openssl.org/source/
 Tested iOS SDK 7.1 and MacOSX 10.9
