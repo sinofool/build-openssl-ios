@@ -6,14 +6,14 @@ Includes armv7 armv7s arm64 i386 and x86_64 support.
 
 Script only, please download openssl from here: http://www.openssl.org/source/
 Tested iOS SDK 7.1 and MacOSX 10.9
-Tested openssl 1.0.1f
+Tested openssl 1.0.1g (which includes fix for Heartbleed bug)
 
 Usage
 =================
 ```
-curl -O http://www.openssl.org/source/openssl-1.0.1f.tar.gz
-tar xf openssl-1.0.1f.tar.gz
-cd openssl-1.0.1f
+curl -O http://www.openssl.org/source/openssl-1.0.1g.tar.gz
+tar xf openssl-1.0.1g.tar.gz
+cd openssl-1.0.1g
 curl https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/build_openssl_dist.sh |bash
 ......
 ```
