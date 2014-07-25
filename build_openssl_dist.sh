@@ -7,6 +7,8 @@ CROSS_SDK_SIM="iPhoneSimulator7.1.sdk"
 CROSS_TOP_IOS="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
 CROSS_SDK_IOS="iPhoneOS7.1.sdk"
 
+TOOLCHAIN_ROOT="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain"
+
 function build_for ()
 {
   PLATFORM=$1
@@ -20,6 +22,7 @@ function build_for ()
   export CROSS_SDK="${!CROSS_SDK_ENV}"
   ./Configure $PLATFORM no-asm --prefix=${TMP_DIR}/${ARCH} || exit 1
   # problem of concurrent build; make -j8
+  export PATH=${TOOLCHAIN_ROOT}/usr/bin:$PATH
   make && make install || exit 2
   unset CROSS_TOP
   unset CROSS_SDK
