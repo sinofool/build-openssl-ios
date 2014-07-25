@@ -43,14 +43,14 @@ function pack_for ()
 curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-conf.patch
 patch Configure < patch-conf.patch
 
-build_for iphoneos-cross-sim32 i386 SIM
-build_for iphoneos-cross-sim64 x86_64 SIM
-build_for iphoneos-cross-armv7 armv7 IOS
-build_for iphoneos-cross-armv7s armv7s IOS
-build_for iphoneos-cross-arm64 arm64 IOS
+build_for iphoneos-cross-sim32 i386 SIM || exit 1
+build_for iphoneos-cross-sim64 x86_64 SIM || exit 2
+build_for iphoneos-cross-armv7 armv7 IOS || exit 3
+build_for iphoneos-cross-armv7s armv7s IOS || exit 4
+build_for iphoneos-cross-arm64 arm64 IOS || exit 5
 
-pack_for ssl
-pack_for crypto
+pack_for ssl || exit 6
+pack_for crypto || exit 7
 
 cp -r ${TMP_DIR}/armv7s/include ${TMP_DIR}/
 sed -i.old -e "90,96d" ${TMP_DIR}/include/openssl/opensslconf.h
