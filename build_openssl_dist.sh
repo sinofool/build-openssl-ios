@@ -31,6 +31,7 @@ function build_for ()
 function pack_for ()
 {
   LIBNAME=$1
+  mkdir -p ${TMP_DIR}/lib/
   ${DEVROOT}/usr/bin/lipo \
 	-arch i386 ${TMP_DIR}/i386/lib/lib${LIBNAME}.a \
 	-arch x86_64 ${TMP_DIR}/x86_64/lib/lib${LIBNAME}.a \
@@ -53,10 +54,10 @@ pack_for ssl || exit 6
 pack_for crypto || exit 7
 
 cp -r ${TMP_DIR}/armv7s/include ${TMP_DIR}/
-sed -i.old -e "90,96d" ${TMP_DIR}/include/openssl/opensslconf.h
+sed -i.old -e "96,102d" ${TMP_DIR}/include/openssl/opensslconf.h
 rm -f ${TMP_DIR}/include/openssl/opensslconf.h.old
 curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-include.patch
-patch ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
+patch -p3 ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
 
 DIST_DIR=${HOME}/Desktop/openssl-ios-dist/
 rm -rf ${DIST_DIR}

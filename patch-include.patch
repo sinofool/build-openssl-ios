@@ -1,14 +1,28 @@
-137a138,140
-> #if defined(__LP64__)
-> #undef BN_LLONG
-> #else
-138a142
-> #endif
-142a147,151
-> #if defined(__LP64__)
-> #define SIXTY_FOUR_BIT_LONG
-> #undef SIXTY_FOUR_BIT
-> #undef THIRTY_TWO_BIT
-> #else
-146a156
-> #endif
+--- armv7s/include/openssl/opensslconf.h	2014-09-30 11:49:06.000000000 -0700
++++ openssl-ios-dist/include/openssl/opensslconf.h	2014-09-30 11:58:34.000000000 -0700
+@@ -142,15 +142,25 @@
+ 
+ #if defined(HEADER_BN_H) && !defined(CONFIG_HEADER_BN_H)
+ #define CONFIG_HEADER_BN_H
++#ifdef __LP64__
++#undef BN_LLONG
++#else
+ #define BN_LLONG
++#endif
+ 
+ /* Should we define BN_DIV2W here? */
+ 
+ /* Only one for the following should be defined */
++#ifdef __LP64__
++#define SIXTY_FOUR_BIT_LONG
++#undef SIXTY_FOUR_BIT
++#undef THIRTY_TWO_BIT
++#else
+ #undef SIXTY_FOUR_BIT_LONG
+ #undef SIXTY_FOUR_BIT
+ #define THIRTY_TWO_BIT
+ #endif
++#endif
+ 
+ #if defined(HEADER_RC4_LOCL_H) && !defined(CONFIG_HEADER_RC4_LOCL_H)
+ #define CONFIG_HEADER_RC4_LOCL_H
