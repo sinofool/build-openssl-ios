@@ -2,10 +2,10 @@
 
 TMP_DIR=/tmp/build_openssl_$$
 CROSS_TOP_SIM="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer"
-CROSS_SDK_SIM="iPhoneSimulator8.0.sdk"
+CROSS_SDK_SIM="iPhoneSimulator.sdk"
 
 CROSS_TOP_IOS="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer"
-CROSS_SDK_IOS="iPhoneOS8.0.sdk"
+CROSS_SDK_IOS="iPhoneOS.sdk"
 
 TOOLCHAIN_ROOT="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain"
 
