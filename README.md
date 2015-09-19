@@ -1,18 +1,12 @@
 OpenSSL for iOS
 =================
-Build openssl for iOS development
-
-This script will generate static library for armv7 armv7s arm64 i386 and x86_64.
-
+Build openssl for iOS development  
+This script will generate static library for armv7 armv7s arm64 i386 and x86_64.  
 New Xcode7 bitcode feature supported.
 
-
-Script only, please download openssl from here: http://www.openssl.org/source/
-
-Tested iOS SDK 9.0 and MacOSX 10.11
-
+Script only, please download openssl from here: http://www.openssl.org/source/  
+Tested iOS SDK 9.0 and MacOSX 10.11  
 Tested openssl 1.0.2d
-
 
 
 Usage
