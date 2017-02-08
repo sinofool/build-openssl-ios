@@ -38,7 +38,7 @@ function pack_for ()
 	-output ${TMP_DIR}/lib/lib${LIBNAME}.a -create
 }
 
-curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-conf.patch
+curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/1.1/patch-conf.patch
 #cp ../build-openssl-ios/patch-conf.patch .
 patch Configurations/10-main.conf < patch-conf.patch
 
@@ -50,12 +50,12 @@ pack_for ssl || exit 6
 pack_for crypto || exit 7
 
 cp -r ${TMP_DIR}/armv7s/include ${TMP_DIR}/
-curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-include.patch
+curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/1.1/patch-include.patch
 #cp ../build-openssl-ios/patch-include.patch .
 patch -p3 ${TMP_DIR}/include/openssl/opensslconf.h < patch-include.patch
 
 DFT_DIST_DIR=${HOME}/Desktop/openssl-ios-dist/
-DIST_DIR=${DIST_DIR:-DFT_DIST_DIR}
+DIST_DIR=${DIST_DIR:-$DFT_DIST_DIR}
 mkdir -p ${DIST_DIR}
 cp -r ${TMP_DIR}/include ${TMP_DIR}/lib ${DIST_DIR}
 
