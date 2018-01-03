@@ -20,7 +20,7 @@ function build_for ()
 
   export CROSS_TOP="${!CROSS_TOP_ENV}"
   export CROSS_SDK="${!CROSS_SDK_ENV}"
-  ./Configure $PLATFORM no-asm no-ssl3 no-comp no-hw no-engine --prefix=${TMP_DIR}/${ARCH} || exit 1
+  ./Configure $PLATFORM "-arch $ARCH -fembed-bitcode" no-asm no-ssl3 no-comp no-hw no-engine --prefix=${TMP_DIR}/${ARCH} || exit 1
   # problem of concurrent build; make -j8
   make && make install_sw || exit 2
   unset CROSS_TOP
@@ -32,9 +32,9 @@ function pack_for ()
   LIBNAME=$1
   mkdir -p ${TMP_DIR}/lib/
   ${DEVROOT}/usr/bin/lipo \
-	-arch x86_64 ${TMP_DIR}/x86_64/lib/lib${LIBNAME}.a \
-	-arch armv7s ${TMP_DIR}/armv7s/lib/lib${LIBNAME}.a \
-	-arch arm64 ${TMP_DIR}/arm64/lib/lib${LIBNAME}.a \
+	${TMP_DIR}/x86_64/lib/lib${LIBNAME}.a \
+	${TMP_DIR}/armv7s/lib/lib${LIBNAME}.a \
+	${TMP_DIR}/arm64/lib/lib${LIBNAME}.a \
 	-output ${TMP_DIR}/lib/lib${LIBNAME}.a -create
 }
 
