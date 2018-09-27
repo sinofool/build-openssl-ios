@@ -1,4 +1,4 @@
-1630a1631,1637
+1636a1637,1643
 >     "ios64sim-cross" => {
 >         inherit_from     => [ "darwin-common", asm("no_asm") ],
 >         cflags           => add("-arch x86_64 -DOPENSSL_NO_ASM -mios-version-min=7.0.0 -isysroot \$(CROSS_TOP)/SDKs/\$(CROSS_SDK) -fno-common"),
