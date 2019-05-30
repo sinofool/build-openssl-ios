@@ -12,15 +12,8 @@ For 1.0.x version, please check branch 1.0.x
 
 Usage
 =================
-Copy the following lines to your Terminal.app
-```
-curl -O https://www.openssl.org/source/openssl-1.1.1b.tar.gz
-tar xf openssl-1.1.1b.tar.gz
-cd openssl-1.1.1b
-curl https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/build_openssl_dist.sh |bash
-```
+Clone this repo and run the `build.sh` script
 Find the result folder openssl-ios-dist on your desktop.
-
 
 Binary (old 1.0.2c)
 =================
