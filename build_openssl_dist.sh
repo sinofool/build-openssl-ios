@@ -1,6 +1,8 @@
 #!/bin/bash
 
-TMP_DIR=/tmp/build_openssl_$$
+set -x
+
+TMP_DIR=../build_openssl
 CROSS_TOP_SIM="`xcode-select --print-path`/Platforms/iPhoneSimulator.platform/Developer"
 CROSS_SDK_SIM="iPhoneSimulator.sdk"
 
@@ -38,9 +40,7 @@ function pack_for ()
 	-output ${TMP_DIR}/lib/lib${LIBNAME}.a -create
 }
 
-curl -O https://raw.githubusercontent.com/sinofool/build-openssl-ios/master/patch-conf.patch
-#cp ../patch-conf.patch .
-patch Configurations/10-main.conf < patch-conf.patch
+patch Configurations/10-main.conf < ../patch-conf.patch
 
 build_for ios64sim-cross x86_64 SIM || exit 2
 build_for ios-cross armv7s IOS || exit 4
